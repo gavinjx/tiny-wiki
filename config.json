@@ -1,0 +1,7 @@
+{
+    "title": "Gavin Wiki",
+    "useSideMenu": true,
+    "lineBreaks": "gfm",
+    "additionalFooterText": "All content and images &copy; by Gavin <br>",
+    "anchorCharacter": "#"
+}
