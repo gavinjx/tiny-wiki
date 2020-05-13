@@ -41,11 +41,11 @@ func main() {
 	fmt.Println("==============================")
 	fmt.Printf("files: %v", files)
 
-	generate_nav(navigation_md, idx_md, floders)
+	generate_nav(navigation_md, idx_md, floders, files)
 	generate_index(idx_md, floders, files)
 }
 
-func generate_nav(navigation_md, index_md string, floders map[int]map[string][]string) {
+func generate_nav(navigation_md, index_md string, floders map[int]map[string][]string, files map[string][]string) {
 	text := "[gimmick:theme](cerulean)\n"
 	text += "# Gavin Wiki" // wiki name
 	for depth, child_floders := range floders {
@@ -74,6 +74,12 @@ func generate_nav(navigation_md, index_md string, floders map[int]map[string][]s
 							fs_name = fs
 						}
 						text += "  * [" + fs_name + "](" + fs + "/" + index_md + ")\n"
+					}
+				}
+				// file idx
+				if t_fs, ok := files[f]; ok {
+					for _, t_f := range t_fs {
+						text += "  * [" + t_f + "](" + f + "/" + t_f + ")\n"
 					}
 				}
 			}
